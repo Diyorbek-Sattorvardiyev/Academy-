@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Users</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/courses">Courses</a>
+        </nav>
+    </header>
+    <section>
+        <ul>
+            {% for user in users %}
+            <li>{{ user.name }} ({{ user.email }}) - {{ user.role }}</li>
+            {% endfor %}
+        </ul>
+        <form method="POST" action="/add_user">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <select name="role">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="admin">Admin</option>
+            </select>
+            <button type="submit">Add User</button>
+        </form>
+    </section>
+</body>
+</html>
